@@ -32,8 +32,6 @@ function handleGetAnswer() {
       let ansStr = xmlhttp.responseText;
       let ansNum = parseFloat(ansStr);
 
-      console.log(ansNum, countDecimals(ansNum));
-
       if (countDecimals(ansNum) > 6) {
         display.innerHTML = ansNum.toFixed(6);
       } else {

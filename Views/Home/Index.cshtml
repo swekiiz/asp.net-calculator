@@ -3,32 +3,28 @@
 
     Button[] btnList = new Button[]
     {
-new Button("1", "handleClick(\"1\")"),
-new Button("2", "handleClick(\"2\")") ,
-new Button("3", "handleClick(\"3\")"),
-new Button("+", "handleClick(\"+\")"),
-new Button("4", "handleClick(\"4\")"),
-new Button("5", "handleClick(\"5\")"),
-new Button("6", "handleClick(\"6\")"),
-new Button("-", "handleClick(\"-\")"),
-new Button("7", "handleClick(\"7\")"),
-new Button("8", "handleClick(\"8\")"),
-new Button("9", "handleClick(\"9\")"),
-new Button("x", "handleClick(\"x\")"),
-new Button("0", "handleClick(\"0\")"),
-new Button(".", "handleClick(\".\")"),
-new Button("=", "handleGetAnswer()"),
-new Button("/", "handleClick(\"/\")"),
+        new Button("1", "handleClick(\"1\")"),
+        new Button("2", "handleClick(\"2\")") ,
+        new Button("3", "handleClick(\"3\")"),
+        new Button("+", "handleClick(\"+\")"),
+        new Button("4", "handleClick(\"4\")"),
+        new Button("5", "handleClick(\"5\")"),
+        new Button("6", "handleClick(\"6\")"),
+        new Button("-", "handleClick(\"-\")"),
+        new Button("7", "handleClick(\"7\")"),
+        new Button("8", "handleClick(\"8\")"),
+        new Button("9", "handleClick(\"9\")"),
+        new Button("x", "handleClick(\"x\")"),
+        new Button("0", "handleClick(\"0\")"),
+        new Button(".", "handleClick(\".\")"),
+        new Button("=", "handleGetAnswer()"),
+        new Button("/", "handleClick(\"/\")"),
     };
 }
 
-
-
 <div class="calculator-container">
     <div class="display-wrapper">
-        <h1 class="display">
-            &nbsp;
-        </h1>
+        <h1 class="display">&nbsp;</h1>
     </div>
     <div class="button-group">
         @foreach (var Btn in btnList)
@@ -38,7 +34,6 @@ new Button("/", "handleClick(\"/\")"),
             </button>
         }
     </div>
-
 
     <button class="clear-button" onclick="handleClear()">
         clear
