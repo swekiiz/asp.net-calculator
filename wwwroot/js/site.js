@@ -1,4 +1,48 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿let quickMath = '';
+let xmlhttp = new XMLHttpRequest();
 
-// Write your JavaScript code.
+function handleClick(char) {
+  quickMath += char;
+
+  let display = document.querySelector('.display');
+  display.innerHTML = quickMath;
+}
+
+function handleClear() {
+  quickMath = '';
+  let display = document.querySelector('.display');
+  display.innerHTML = '&nbsp;';
+}
+
+function countDecimals(num) {
+  if (Math.floor(num.valueOf()) === num.valueOf()) return 0;
+  return num.toString().split('.')[1].length || 0;
+}
+
+function hash(str) {
+  return str.replaceAll('+', '%2B');
+}
+
+function handleGetAnswer() {
+  let display = document.querySelector('.display');
+
+  xmlhttp.open('GET', '/Home/Calculate/?number=' + hash(quickMath));
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      let ansStr = xmlhttp.responseText;
+      let ansNum = parseFloat(ansStr);
+
+      console.log(ansNum, countDecimals(ansNum));
+
+      if (countDecimals(ansNum) > 6) {
+        display.innerHTML = ansNum.toFixed(6);
+      } else {
+        display.innerHTML = ansStr;
+      }
+
+      quickMath = ansStr;
+    }
+  };
+
+  xmlhttp.send(null);
+}

@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Calculator.Models;
+using System.Data;
+using System.Text;
 
 namespace Calculator.Controllers;
 
@@ -11,6 +13,17 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
+    }
+
+    [Produces("text/html")]
+    public IActionResult Calculate(string number)
+    {
+        CalculatorModel cal = new CalculatorModel();
+        DataTable table = new DataTable();
+
+        string value = table.Compute(number, null).ToString();
+        cal.CalculateValue = value;
+        return Content(cal.CalculateValue, "text/html", Encoding.UTF8);
     }
 
     public IActionResult Index()
